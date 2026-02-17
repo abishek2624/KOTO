@@ -1,16 +1,18 @@
+require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: process.env.CLIENT_URL || '*' }));
 app.use(express.json());
 
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root', // default XAMPP
-  password: '', // default
-  database: 'koto'
+  host: process.env.DB_HOST || 'localhost',
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASS || '',
+  database: process.env.DB_NAME || 'koto',
+  port: process.env.DB_PORT ? Number(process.env.DB_PORT) : 3306
 });
 
 db.connect((err) => {
@@ -122,7 +124,13 @@ app.get('/api/user/:id', (req, res) => {
   });
 });
 
-const PORT = 5001;
+const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+});
+
+// Basic production error handler
+app.use((err, req, res, next) => {
+  console.error('Unhandled error:', err);
+  res.status(500).json({ message: 'Internal Server Error' });
 });

@@ -42,8 +42,10 @@ const Login = ({ onLoginSuccess }) => {
     setLoading(true);
     setError('');
 
+    const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5001';
+
     try {
-      const response = await fetch('http://localhost:5001/api/signin', {
+      const response = await fetch(`${API_BASE}/api/signin`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(signInData)
@@ -92,8 +94,10 @@ const Login = ({ onLoginSuccess }) => {
     setLoading(true);
     setError('');
 
+    const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5001';
+
     try {
-      const response = await fetch('http://localhost:5001/api/signup', {
+      const response = await fetch(`${API_BASE}/api/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(signUpData)
@@ -166,6 +170,21 @@ const Login = ({ onLoginSuccess }) => {
         {/* Error Message */}
         {error && <div className="login-error-message">{error}</div>}
         {success && <div className="login-success-message">{success}</div>}
+
+        {/* Welcome Greeting */}
+        <div className="login-greeting">
+          {isSignIn ? (
+            <>
+              <h2 className="greeting-title">Welcome Back! 👋</h2>
+              <p className="greeting-subtitle">Sign in to continue your journey</p>
+            </>
+          ) : (
+            <>
+              <h2 className="greeting-title">Join Us Today! ✨</h2>
+              <p className="greeting-subtitle">Create your account to get started</p>
+            </>
+          )}
+        </div>
 
         {/* Sign In Form */}
         {isSignIn && (

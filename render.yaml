@@ -1,0 +1,25 @@
+# Render service configuration for the KOTO backend
+# See: https://render.com/docs/deploy-using-render-yaml
+services:
+  - type: web
+    name: koto-backend
+    env: node
+    plan: starter
+    branch: main
+    buildCommand: ""
+    startCommand: "node server/server.js"
+    autoDeploy: true
+    region: oregon
+    envVars:
+      - key: DB_HOST
+        scope: private
+      - key: DB_USER
+        scope: private
+      - key: DB_PASS
+        scope: private
+      - key: DB_NAME
+        scope: private
+      - key: DB_PORT
+        scope: private
+      - key: CLIENT_URL
+        scope: private

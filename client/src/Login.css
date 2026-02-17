@@ -12,6 +12,7 @@
   z-index: 10000;
   overflow: hidden;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
 }
 
 /* Animated Background */
@@ -41,19 +42,38 @@
 .login-card {
   position: relative;
   z-index: 1;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(30px);
+  border-radius: 30px;
   box-shadow: 
-    0 8px 32px 0 rgba(31, 38, 135, 0.37),
-    0 0 60px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  width: 90%;
-  max-width: 500px;
-  padding: 40px;
+    0 20px 60px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  width: 100%;
+  max-width: 420px;
+  padding: 30px 35px;
   animation: cardSlideIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-  max-height: 90vh;
+  max-height: calc(100vh - 40px);
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(102, 126, 234, 0.2) transparent;
+}
+
+.login-card::-webkit-scrollbar {
+  width: 6px;
+}
+
+.login-card::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.login-card::-webkit-scrollbar-thumb {
+  background: rgba(102, 126, 234, 0.3);
+  border-radius: 3px;
+}
+
+.login-card::-webkit-scrollbar-thumb:hover {
+  background: rgba(102, 126, 234, 0.5);
 }
 
 @keyframes cardSlideIn {
@@ -70,7 +90,7 @@
 /* Login Header */
 .login-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 18px;
   animation: headerFadeIn 0.8s ease-out 0.2s backwards;
 }
 
@@ -86,15 +106,15 @@
 }
 
 .login-logo {
-  width: 350px;
-  height: 150px;
-  margin-bottom: 15px;
+  width: 160px;
+  height: 70px;
+  margin-bottom: 8px;
   animation: logoBounce 2s ease-in-out infinite;
   filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.3));
   object-fit: contain;
-  border-radius: 20px;
+  border-radius: 15px;
   background: rgba(255, 255, 255, 0.1);
-  padding: 10px;
+  padding: 8px;
 }
 
 @keyframes logoBounce {
@@ -102,12 +122,12 @@
     transform: translateY(0) scale(1);
   }
   50% {
-    transform: translateY(-15px) scale(1.05);
+    transform: translateY(-8px) scale(1.03);
   }
 }
 
 .login-title {
-  font-size: 42px;
+  font-size: 28px;
   font-weight: bold;
   color: #2c3e50;
   margin: 0;
@@ -120,8 +140,8 @@
 
 .login-subtitle {
   color: #7f8c8d;
-  margin-top: 8px;
-  font-size: 14px;
+  margin-top: 5px;
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 1px;
 }
@@ -129,8 +149,8 @@
 /* Tab Navigation */
 .login-tabs {
   display: flex;
-  gap: 10px;
-  margin-bottom: 30px;
+  gap: 8px;
+  margin-bottom: 20px;
   background: #f8f9fa;
   padding: 5px;
   border-radius: 12px;
@@ -150,7 +170,7 @@
 
 .login-tab {
   flex: 1;
-  padding: 12px 20px;
+  padding: 10px 16px;
   border: none;
   border-radius: 10px;
   background: transparent;
@@ -191,11 +211,11 @@
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  gap: 12px;
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   animation: inputSlideIn 0.6s ease-out backwards;
 }
 
@@ -217,17 +237,17 @@
 
 .form-group label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
   color: #2c3e50;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.5px;
 }
 
 .form-group input,
 .form-group select {
   width: 100%;
-  padding: 12px 15px;
+  padding: 9px 12px;
   border: 2px solid #e9ecef;
   border-radius: 10px;
   font-size: 14px;
@@ -260,8 +280,8 @@
 /* Button */
 .login-btn {
   width: 100%;
-  padding: 14px;
-  margin-top: 10px;
+  padding: 11px;
+  margin-top: 5px;
   border: none;
   border-radius: 10px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -325,6 +345,89 @@
   animation: messageSlideIn 0.4s ease-out;
 }
 
+/* Welcome Greeting Section */
+.login-greeting {
+  text-align: center;
+  margin-bottom: 22px;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+  border-radius: 16px;
+  border: 1px solid rgba(102, 126, 234, 0.15);
+  animation: greetingFadeIn 0.8s ease-out 0.2s backwards;
+}
+
+@keyframes greetingFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.greeting-title {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.5px;
+  animation: titlePulse 0.6s ease-out 0.4s backwards;
+}
+
+@keyframes titlePulse {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.greeting-subtitle {
+  margin: 0;
+  font-size: 13px;
+  color: #7f8c8d;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  animation: subtitleSlide 0.6s ease-out 0.5s backwards;
+}
+
+@keyframes subtitleSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Sign Up Form - Full Width Single Column */
+.sign-up-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.sign-up-form .form-group {
+  margin-bottom: 14px;
+  width: 100%;
+}
+
+.sign-up-form .form-group:last-child {
+  margin-bottom: 10px;
+}
+
 @keyframes messageSlideIn {
   from {
     opacity: 0;
@@ -386,6 +489,20 @@
     font-size: 36px;
   }
 
+  .greeting-title {
+    font-size: 22px;
+    margin-bottom: 6px;
+  }
+
+  .greeting-subtitle {
+    font-size: 12px;
+  }
+
+  .login-greeting {
+    margin-bottom: 18px;
+    padding: 14px;
+  }
+
   .form-row {
     grid-template-columns: 1fr;
   }
@@ -416,6 +533,21 @@
 
   .login-subtitle {
     font-size: 12px;
+  }
+
+  .greeting-title {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+
+  .greeting-subtitle {
+    font-size: 11px;
+  }
+
+  .login-greeting {
+    margin-bottom: 15px;
+    padding: 12px;
+    border-radius: 12px;
   }
 
   .form-group input,

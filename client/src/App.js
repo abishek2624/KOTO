@@ -15,6 +15,8 @@ const App = () => {
   const [hasStarted, setHasStarted] = useState(false);
   const [isIntro, setIsIntro] = useState(true);
 
+  const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5001';
+
   const disabilities = [
     { id: 'visual', label: 'Visual Impairment (Blind)', icon: '👁️' },
     { id: 'hearing', label: 'Hearing Impairment', icon: '👂' },
@@ -90,7 +92,7 @@ const App = () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch('http://localhost:5001/api/phrases');
+      const res = await fetch(`${API_BASE}/api/phrases`);
       if (!res.ok) throw new Error('Failed to fetch phrases');
       const data = await res.json();
       console.log('Fetched phrases from server:', data);
@@ -226,7 +228,7 @@ const App = () => {
 
   const updateUsage = async (id) => {
     try {
-      await fetch(`http://localhost:5001/api/phrases/${id}`, { method: 'PUT' });
+      await fetch(`${API_BASE}/api/phrases/${id}`, { method: 'PUT' });
       fetchPhrases(); // Reorder
     } catch (err) {
       console.error('Error updating usage:', err);
